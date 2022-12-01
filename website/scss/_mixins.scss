@@ -1,0 +1,14 @@
+@mixin Button($py, $px, $fs, $c, $hc: $c) {
+  padding: $py $px;
+  font-size: $fs;
+  background-color: $c;
+  color: black;
+  border-radius: 10px;
+  border: none;
+  transition: all 0.5s;
+
+  &:hover {
+    background-color: $hc;
+    color: white;
+  }
+}

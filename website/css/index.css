@@ -1,0 +1,72 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+
+header {
+  padding: 20px 0;
+  color: black;
+  text-transform: uppercase;
+}
+header img {
+  height: 100%;
+}
+header #btnCart {
+  padding: 15px 20px;
+  font-size: 30px;
+  background-color: #f3893c;
+  color: black;
+  border-radius: 10px;
+  border: none;
+  transition: all 0.5s;
+}
+header #btnCart:hover {
+  background-color: #381f59;
+  color: white;
+}
+
+.products .products__filter {
+  margin: 50px 0 20px;
+}
+.products .products__filter #select__type {
+  padding: 10px 20px;
+  font-size: 20px;
+  border-radius: 10px;
+}
+.products #products__content .card img {
+  margin: 20px 0;
+}
+.products #products__content .card h5 {
+  font-size: 20px;
+  color: #f3893c;
+}
+.products #products__content .card span {
+  font-weight: 700;
+}
+.products #products__content .card .span__price {
+  font-size: 20px;
+  color: #381f59;
+}
+.products #products__content .card .span__price span {
+  font-size: 25px;
+}
+.products #products__content .card .btn__mua {
+  padding: 10px 10px;
+  font-size: 20px;
+  background-color: #f3893c;
+  color: black;
+  border-radius: 10px;
+  border: none;
+  transition: all 0.5s;
+  margin-bottom: 20px;
+}
+.products #products__content .card .btn__mua:hover {
+  background-color: #381f59;
+  color: white;
+}/*# sourceMappingURL=index.css.map */

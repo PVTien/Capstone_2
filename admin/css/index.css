@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 16px;
+}
+header {
+  background-color: coral;
+  padding: 20px 0;
+}
+header h1 {
+  text-transform: uppercase;
+  margin-bottom: 0;
+}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Capstone 2</title>
+    <title>Capstone 2 - Admin</title>
 
     <!-- GG FONT -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -36,26 +36,29 @@
   </head>
   <body>
     <header>
-      <div class="container d-flex justify-content-between">
-        <div class="logo">
-          <img src="../img/Untitled-2.png" alt="" />
-        </div>
-        <button id="btnCart">
-          <i class="fa-solid fa-cart-shopping"></i>
-        </button>
+      <div class="container">
+        <h1 class="text-center">Quản lý sản phẩm</h1>
       </div>
     </header>
-    <section class="products my-5">
+    <section class="product mt-5">
       <div class="container">
-        <div class="products__filter">
-          <select id="select__type">
-            <option selected>Chọn hãng</option>
-            <option value="all">Tất cả</option>
-            <option value="Iphone">Iphone</option>
-            <option value="Samsung">Samsung</option>
-          </select>
-        </div>
-        <div id="products__content" class="row"></div>
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark text-center">
+            <tr>
+              <th>STT</th>
+              <th>Tên sản phẩm</th>
+              <th>Giá</th>
+              <th>Màn hình</th>
+              <th>Camera sau</th>
+              <th>Camera trước</th>
+              <th>Hình</th>
+              <th>Mô tả</th>
+              <th>Loại</th>
+              <th>Thao tác</th>
+            </tr>
+          </thead>
+          <tbody id="tbodySanPham"></tbody>
+        </table>
       </div>
     </section>
 
