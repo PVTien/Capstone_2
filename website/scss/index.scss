@@ -17,12 +17,13 @@ header {
 }
 .products {
   .products__filter {
-    margin: 50px 0 20px;
-
-    #select__type {
+    select {
       padding: 10px 20px;
       font-size: $text-md;
       border-radius: 10px;
+      display: block;
+      margin-left: auto;
+      margin-right: 0;
     }
   }
   #products__content {
