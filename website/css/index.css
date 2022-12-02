@@ -56,7 +56,7 @@ header #btnCart:hover {
 .products #products__content .card .span__price span {
   font-size: 25px;
 }
-.products #products__content .card .btn__mua {
+.products #products__content .card .btn__addCart {
   padding: 10px 10px;
   font-size: 20px;
   background-color: #f3893c;
@@ -66,7 +66,7 @@ header #btnCart:hover {
   transition: all 0.5s;
   margin-bottom: 20px;
 }
-.products #products__content .card .btn__mua:hover {
+.products #products__content .card .btn__addCart:hover {
   background-color: #381f59;
   color: white;
 }/*# sourceMappingURL=index.css.map */

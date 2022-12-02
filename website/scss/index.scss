@@ -45,7 +45,7 @@ header {
           font-size: $text-lg;
         }
       }
-      .btn__mua {
+      .btn__addCart {
         @include Button(10px, 10px, $text-md, $c1-100, $c2-100);
         margin-bottom: 20px;
       }
