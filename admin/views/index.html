@@ -46,12 +46,13 @@
         <div class="add__product mb-5">
           <!-- Button trigger modal -->
           <button
+            id="btnThemSP"
             type="button"
             class="btn btn-primary"
             data-toggle="modal"
             data-target="#myModal"
           >
-            Launch demo modal
+            Thêm sản phẩm mới
           </button>
 
           <!-- Modal -->
@@ -65,9 +66,9 @@
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">
+                  <h3 class="modal-title" id="exampleModalLabel">
                     Modal title
-                  </h5>
+                  </h3>
                   <button
                     type="button"
                     class="close"
@@ -77,19 +78,81 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div class="modal-body">...</div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button type="button" class="btn btn-primary">
-                    Save changes
-                  </button>
+                <div class="modal-body">
+                  <form id="myForm">
+                    <div class="form-group">
+                      <label>Tên sản phẩm</label>
+                      <input
+                        type="text"
+                        id="TenSP"
+                        class="form-control"
+                        placeholder="Nhập tên sản phẩm"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Giá</label>
+                      <input
+                        type="number"
+                        id="GiaSP"
+                        class="form-control"
+                        placeholder="Nhập giá sản phẩm"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Màn hình</label>
+                      <input
+                        type="text"
+                        id="ManHinhSP"
+                        class="form-control"
+                        placeholder="Nhập kích thước màn hình"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Camera sau</label>
+                      <input
+                        type="text"
+                        id="CameraSau"
+                        class="form-control"
+                        placeholder="Nhập thông số camera sau"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Camera trước</label>
+                      <input
+                        type="text"
+                        id="CameraTruoc"
+                        class="form-control"
+                        placeholder="Nhập thông số camera trước"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Hình ảnh</label>
+                      <input
+                        type="url"
+                        id="HinhSP"
+                        class="form-control"
+                        placeholder="Nhập đường dẫn hình ảnh"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Mô tả</label>
+                      <input
+                        type="text"
+                        id="MoTaSP"
+                        class="form-control"
+                        placeholder="Nhập mô tả"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label>Loại sản phẩm</label>
+                      <select id="LoaiSP" class="form-control">
+                        <option value="Iphone">Iphone</option>
+                        <option value="Samsung">Samsung</option>
+                      </select>
+                    </div>
+                  </form>
                 </div>
+                <div class="modal-footer"></div>
               </div>
             </div>
           </div>
@@ -132,8 +195,6 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <!-- MY JS -->
-    <script src="../models/product.js"></script>
-    <script src="../services/product.js"></script>
-    <script src="../controllers/index.js"></script>
+    <script type="module" src="../controllers/index.js"></script>
   </body>
 </html>
