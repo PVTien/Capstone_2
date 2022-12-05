@@ -88,15 +88,17 @@
                         class="form-control"
                         placeholder="Nhập tên sản phẩm"
                       />
+                      <span class="spanTb" id="tbTenSP"></span>
                     </div>
                     <div class="form-group">
                       <label>Giá</label>
                       <input
-                        type="number"
+                        type="text"
                         id="GiaSP"
                         class="form-control"
                         placeholder="Nhập giá sản phẩm"
                       />
+                      <span class="spanTb" id="tbGiaSP"></span>
                     </div>
                     <div class="form-group">
                       <label>Màn hình</label>
@@ -106,6 +108,7 @@
                         class="form-control"
                         placeholder="Nhập kích thước màn hình"
                       />
+                      <span class="spanTb" id="tbManHinhSP"></span>
                     </div>
                     <div class="form-group">
                       <label>Camera sau</label>
@@ -115,6 +118,7 @@
                         class="form-control"
                         placeholder="Nhập thông số camera sau"
                       />
+                      <span class="spanTb" id="tbCamSau"></span>
                     </div>
                     <div class="form-group">
                       <label>Camera trước</label>
@@ -124,6 +128,7 @@
                         class="form-control"
                         placeholder="Nhập thông số camera trước"
                       />
+                      <span class="spanTb" id="tbCamTruoc"></span>
                     </div>
                     <div class="form-group">
                       <label>Hình ảnh</label>
@@ -133,6 +138,7 @@
                         class="form-control"
                         placeholder="Nhập đường dẫn hình ảnh"
                       />
+                      <span class="spanTb" id="tbHinhSP"></span>
                     </div>
                     <div class="form-group">
                       <label>Mô tả</label>
@@ -142,6 +148,7 @@
                         class="form-control"
                         placeholder="Nhập mô tả"
                       />
+                      <span class="spanTb" id="tbMoTaSP"></span>
                     </div>
                     <div class="form-group">
                       <label>Loại sản phẩm</label>
@@ -195,6 +202,8 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <!-- MY JS -->
-    <script type="module" src="../controllers/index.js"></script>
+    <script src="../models/product.js"></script>
+    <script src="../services/product.js"></script>
+    <script src="../controllers/index.js"></script>
   </body>
 </html>

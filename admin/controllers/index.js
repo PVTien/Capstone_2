@@ -1,6 +1,3 @@
-import { Product } from "../models/product.js";
-import { ProductService } from "../services/product.js";
-
 const productService = new ProductService();
 
 const domId = (id) => document.getElementById(id);
@@ -42,6 +39,7 @@ const renderProductList = (data) => {
 };
 
 domId("btnThemSP").onclick = () => {
+  hideSpan();
   domId("exampleModalLabel").innerHTML = "Thêm sản phẩm";
   domId("myForm").reset();
   document.querySelector(".modal-footer").innerHTML =
@@ -49,6 +47,9 @@ domId("btnThemSP").onclick = () => {
 };
 
 const addProduct = () => {
+  const isValid = validateForm();
+  if (!isValid) return;
+
   const name = domId("TenSP").value;
   const price = domId("GiaSP").value;
   const screen = domId("ManHinhSP").value;
@@ -84,6 +85,7 @@ const deleteProduct = (id) => {
 };
 
 const openUpdateModal = (id) => {
+  hideSpan();
   domId("exampleModalLabel").innerHTML = "Sửa sản phẩm";
   document.querySelector(
     ".modal-footer"
@@ -102,6 +104,9 @@ const openUpdateModal = (id) => {
 };
 
 const updateProduct = (id) => {
+  const isValid = validateForm();
+  if (!isValid) return;
+
   const name = domId("TenSP").value;
   const price = domId("GiaSP").value;
   const screen = domId("ManHinhSP").value;
@@ -129,10 +134,66 @@ const updateProduct = (id) => {
   });
 };
 
+const hideSpan = () => {
+  const element = document.getElementsByClassName("spanTb");
+  for (let i in element) {
+    element[i].innerHTML = "";
+  }
+};
+
+// VALIDATION
+const validateForm = () => {
+  const name = domId("TenSP").value;
+  const price = domId("GiaSP").value;
+  const screen = domId("ManHinhSP").value;
+  const backCamera = domId("CameraSau").value;
+  const frontCamera = domId("CameraTruoc").value;
+  const img = domId("HinhSP").value;
+  const desc = domId("MoTaSP").value;
+
+  let isValid = true;
+
+  isValid &= checkInput(name, "tbTenSP");
+  isValid &= checkInput(price, "tbGiaSP") && checkPrice(price, "tbGiaSP");
+  isValid &= checkInput(screen, "tbManHinhSP");
+  isValid &= checkInput(backCamera, "tbCamSau");
+  isValid &= checkInput(frontCamera, "tbCamTruoc");
+  isValid &= checkInput(img, "tbHinhSP") && checkUrl(img, "tbHinhSP");
+  isValid &= checkInput(desc, "tbMoTaSP");
+
+  return isValid;
+};
+
+const checkInput = (value, spanId) => {
+  if (value.length === 0) {
+    domId(spanId).innerHTML = "* Bắt buộc nhập";
+    return false;
+  }
+  domId(spanId).innerHTML = "";
+  return true;
+};
+
+const checkPrice = (value, spanId) => {
+  const pattern = /^[0-9]*$/g;
+  if (pattern.test(value)) {
+    domId(spanId).innerHTML = "";
+    return true;
+  }
+  domId(spanId).innerHTML = "* Chỉ nhập số";
+  return false;
+};
+
+const checkUrl = (value, spanId) => {
+  const pattern =
+    /(?:https?):\/\/(\w+:?\w*)?(\S+)(:\d+)?(\/|\/([\w#!:.?+=&%!\-\/]))?/g;
+  if (pattern.test(value)) {
+    domId(spanId).innerHTML = "";
+    return true;
+  }
+  domId(spanId).innerHTML = "* Định dạng URL không chính xác";
+  return false;
+};
+
 window.onload = () => {
   getProductList();
 };
-window.addProduct = addProduct;
-window.deleteProduct = deleteProduct;
-window.openUpdateModal = openUpdateModal;
-window.updateProduct = updateProduct;

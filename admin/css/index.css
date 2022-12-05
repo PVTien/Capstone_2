@@ -24,3 +24,6 @@ header h1 {
 .product__table table thead th {
   vertical-align: top;
 }
+.product .spanTb {
+  color: red;
+}
