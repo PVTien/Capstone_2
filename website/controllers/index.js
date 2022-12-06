@@ -144,10 +144,6 @@ const getData = () => {
   cart = cartLocal;
 };
 
-const show = () => {
-  console.log(cart);
-};
-
 const pay = () => {
   let totalMoney = 0;
   let oneProd = 0;
