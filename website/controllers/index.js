@@ -23,7 +23,9 @@ const renderProductList = (data) => {
               <p><span>Nổi bật: </span>${element.desc}</p>           
             </div>
             <p class="span__price">Giá: <span>${element.price}</span></p>
-            <button class="btn__addCart" onclick="addToCart(${element.id})">Thêm vào Giỏ hàng</button>
+            <button class="btn__addCart" onclick="addToCart(${element.id}); setTimeout(() => {
+              saveData()
+            }, 2000);">Thêm vào Giỏ hàng</button>
           </div>
       `;
     return total;
@@ -91,11 +93,12 @@ const renderCart = (data) => {
 
 const addToCart = (id) => {
   alert("Đã thêm vào giỏ hàng");
+
   productService.getById(id).then((response) => {
     for (let i in cart) {
       if (Number(cart[i].prod.id) === id) {
         cart[i].quantity++;
-        return;
+        return cart;
       }
     }
     cart.push({ prod: response.data, quantity: 1 });
@@ -109,6 +112,7 @@ const plusQuantity = (id) => {
     }
   }
   renderCart(cart);
+  saveData();
 };
 
 const minusQuantity = (id) => {
@@ -121,6 +125,7 @@ const minusQuantity = (id) => {
     }
   }
   renderCart(cart);
+  saveData();
 };
 
 const deleteCartItem = (id) => {
@@ -130,17 +135,18 @@ const deleteCartItem = (id) => {
     }
   }
   renderCart(cart);
+  saveData();
 };
 
 const saveData = () => {
-  let cartJSON = JSON.stringify(cart);
+  const cartJSON = JSON.stringify(cart);
   localStorage.setItem("cart", cartJSON);
 };
 
 const getData = () => {
-  let cartJSON = localStorage.getItem("cart");
+  const cartJSON = localStorage.getItem("cart");
   if (!cartJSON) return;
-  let cartLocal = JSON.parse(cartJSON);
+  const cartLocal = JSON.parse(cartJSON);
   cart = cartLocal;
 };
 
