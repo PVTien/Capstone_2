@@ -14,7 +14,7 @@ header {
   color: black;
   text-transform: uppercase;
 }
-header img {
+header .logo img {
   height: 100%;
 }
 header #btnCart {
@@ -29,6 +29,29 @@ header #btnCart {
 header #btnCart:hover {
   background-color: #381f59;
   color: white;
+}
+header .modal .cartItem {
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+header .modal .cartItem .img__Cart img {
+  width: 100px;
+  height: 100px;
+}
+header .modal .cartItem .info {
+  padding: 20px;
+}
+header .modal .cartItem .info .p__Name {
+  font-size: 20px;
+}
+header .modal .cartItem .info .p__Price {
+  font-size: 20px;
+  color: red;
+}
+header .modal .cartItem .info input {
+  display: inline-block;
+  width: 30%;
 }
 
 .products .products__filter select {

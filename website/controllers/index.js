@@ -1,7 +1,6 @@
-import { Product } from "../models/product.js";
-import { ProductService } from "../services/product.js";
-
 const productService = new ProductService();
+
+let cart = [];
 
 const domId = (id) => document.getElementById(id);
 
@@ -24,7 +23,7 @@ const renderProductList = (data) => {
               <p><span>Nổi bật: </span>${element.desc}</p>           
             </div>
             <p class="span__price">Giá: <span>${element.price}</span></p>
-            <button class="btn__addCart">Thêm vào Giỏ hàng</button>
+            <button class="btn__addCart" onclick="addToCart(${element.id})">Thêm vào Giỏ hàng</button>
           </div>
       `;
     return total;
@@ -55,6 +54,120 @@ domId("select__type").onchange = (event) => {
   getFilterProductList(value);
 };
 
+const renderCart = (data) => {
+  const html = data.reduce((total, element) => {
+    total += `
+      <div class="cartItem d-flex">
+        <div class="img__Cart d-flex align-items-center px-3">
+          <img src="${element.prod.img}" />
+        </div>
+        <div class="info">
+          <p class="p__Name">${element.prod.name}</p>
+          <p class="p__Price">${element.prod.price}</p>
+          <button class="btn btn-secondary" onclick="minusQuantity(${element.prod.id})">
+            <i class="fa-solid fa-minus"></i>
+          </button>
+          <input
+            class="form-control mx-2 text-center"
+            type="text"
+            value="${element.quantity}"
+            disabled
+          />
+          <button class="btn btn-secondary" onclick="plusQuantity(${element.prod.id})">
+            <i class="fa-solid fa-plus"></i>
+          </button>
+        </div>
+        <div class="btn__delete d-flex align-items-center px-3">
+          <button class="btn btn-danger" onclick="deleteCartItem(${element.prod.id})">
+            <i class="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      </div>    
+    `;
+    return total;
+  }, "");
+  domId("modal__body").innerHTML = html;
+};
+
+const addToCart = (id) => {
+  alert("Đã thêm vào giỏ hàng");
+  productService.getById(id).then((response) => {
+    for (let i in cart) {
+      if (Number(cart[i].prod.id) === id) {
+        cart[i].quantity++;
+        return;
+      }
+    }
+    cart.push({ prod: response.data, quantity: 1 });
+  });
+};
+
+const plusQuantity = (id) => {
+  for (let i in cart) {
+    if (Number(cart[i].prod.id) === id) {
+      cart[i].quantity++;
+    }
+  }
+  renderCart(cart);
+};
+
+const minusQuantity = (id) => {
+  for (let i in cart) {
+    if (Number(cart[i].prod.id) === id) {
+      cart[i].quantity--;
+      if (cart[i].quantity < 1) {
+        cart.splice(i, 1);
+      }
+    }
+  }
+  renderCart(cart);
+};
+
+const deleteCartItem = (id) => {
+  for (let i in cart) {
+    if (Number(cart[i].prod.id) === id) {
+      cart.splice(i, 1);
+    }
+  }
+  renderCart(cart);
+};
+
+const saveData = () => {
+  let cartJSON = JSON.stringify(cart);
+  localStorage.setItem("cart", cartJSON);
+};
+
+const getData = () => {
+  let cartJSON = localStorage.getItem("cart");
+  if (!cartJSON) return;
+  let cartLocal = JSON.parse(cartJSON);
+  cart = cartLocal;
+};
+
+const show = () => {
+  console.log(cart);
+};
+
+const pay = () => {
+  let totalMoney = 0;
+  let oneProd = 0;
+
+  for (let i in cart) {
+    oneProd = cart[i].quantity * cart[i].prod.price;
+    totalMoney += oneProd;
+  }
+
+  if (confirm(`Xác nhận thanh toán ${totalMoney}`)) {
+    alert("Thanh toán thành công");
+    document.querySelector(".close").click();
+    cart = [];
+  } else {
+    document.querySelector(".close").click();
+  }
+  saveData();
+};
+
 window.onload = () => {
   getProductList();
+  getData();
 };

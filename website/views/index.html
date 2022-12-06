@@ -40,9 +40,55 @@
         <div class="logo">
           <img src="../img/Untitled-2.png" alt="" />
         </div>
-        <button id="btnCart">
+
+        <!-- Button trigger modal -->
+        <button
+          id="btnCart"
+          onclick="renderCart(cart)"
+          type="button"
+          data-toggle="modal"
+          data-target="#myModal"
+        >
           <i class="fa-solid fa-cart-shopping"></i>
         </button>
+
+        <!-- Modal -->
+        <div
+          class="modal fade"
+          id="myModal"
+          tabindex="-1"
+          aria-labelledby="exampleModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Giỏ hàng</h5>
+                <button
+                  type="button"
+                  class="close"
+                  data-dismiss="modal"
+                  aria-label="Close"
+                >
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div id="modal__body" class="modal-body"></div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-dismiss="modal"
+                >
+                  Đóng
+                </button>
+                <button onclick="pay()" type="button" class="btn btn-primary">
+                  Thanh toán
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </header>
     <section class="products my-5">
@@ -57,6 +103,7 @@
         <div id="products__content" class="row"></div>
       </div>
     </section>
+    <button onclick="show()">SHOW</button>
 
     <!-- BOOTSTRAP JS -->
     <script
@@ -74,6 +121,8 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <!-- MY JS -->
-    <script type="module" src="../controllers/index.js"></script>
+    <script src="../models/product.js"></script>
+    <script src="../services/product.js"></script>
+    <script src="../controllers/index.js"></script>
   </body>
 </html>

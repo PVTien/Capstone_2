@@ -7,12 +7,40 @@ header {
   color: black;
   text-transform: uppercase;
 
-  img {
-    height: 100%;
+  .logo {
+    img {
+      height: 100%;
+    }
   }
-
   #btnCart {
     @include Button(15px, 20px, $text-xl, $c1-100, $c2-100);
+  }
+  .modal {
+    .cartItem {
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      .img__Cart {
+        img {
+          width: 100px;
+          height: 100px;
+        }
+      }
+      .info {
+        padding: 20px;
+        .p__Name {
+          font-size: $text-md;
+        }
+        .p__Price {
+          font-size: $text-md;
+          color: red;
+        }
+        input {
+          display: inline-block;
+          width: 30%;
+        }
+      }
+    }
   }
 }
 .products {
